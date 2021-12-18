@@ -4,7 +4,9 @@ namespace App\Http\Controllers;
 
 use App\Models\Barbie;
 use App\Models\Favorite;
+use App\Models\User;
 use Illuminate\Http\Request;
+use Validator;
 
 class FavoriteController extends Controller
 {

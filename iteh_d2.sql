@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Dec 18, 2021 at 08:16 PM
+-- Generation Time: Dec 18, 2021 at 08:25 PM
 -- Server version: 10.4.18-MariaDB
 -- PHP Version: 8.0.3
 
@@ -53,7 +53,8 @@ INSERT INTO `barbies` (`id`, `name`, `hair_color`, `length`, `country_id`, `pric
 (7, 'Dorian Armstrong V', 'Black', '28cm', 2, 904.86, '2021-12-18 16:42:52', '2021-12-18 16:42:52', 'Blue'),
 (8, 'Mr. Sedrick Tremblay II', 'Blue', '29cm', 3, 234.48, '2021-12-18 16:42:52', '2021-12-18 16:42:52', 'Brown'),
 (9, 'Sheldon Bahringer', 'Black', '40cm', 14, 864.73, '2021-12-18 16:42:52', '2021-12-18 16:42:52', 'Brown'),
-(10, 'Dino Reichel Sr.', 'Blue', '22cm', 12, 724.85, '2021-12-18 16:42:52', '2021-12-18 16:42:52', 'Green');
+(10, 'Dino Reichel Sr.', 'Blue', '22cm', 12, 724.85, '2021-12-18 16:42:52', '2021-12-18 16:42:52', 'Green'),
+(11, 'Testt', 'Blue', '34cm', 1, 130.22, '2021-12-18 17:22:18', '2021-12-18 17:23:27', 'Brown');
 
 -- --------------------------------------------------------
 
@@ -119,6 +120,14 @@ CREATE TABLE `favorites` (
   `updated_at` timestamp NULL DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
+--
+-- Dumping data for table `favorites`
+--
+
+INSERT INTO `favorites` (`id`, `user_id`, `barbie_id`, `created_at`, `updated_at`) VALUES
+(1, 31, 2, '2021-12-18 17:24:39', '2021-12-18 17:24:39'),
+(3, 31, 3, '2021-12-18 17:24:48', '2021-12-18 17:24:48');
+
 -- --------------------------------------------------------
 
 --
@@ -176,6 +185,14 @@ CREATE TABLE `personal_access_tokens` (
   `updated_at` timestamp NULL DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
+--
+-- Dumping data for table `personal_access_tokens`
+--
+
+INSERT INTO `personal_access_tokens` (`id`, `tokenable_type`, `tokenable_id`, `name`, `token`, `abilities`, `last_used_at`, `created_at`, `updated_at`) VALUES
+(2, 'App\\Models\\User', 31, 'token', '04b88be2baa7f81442be9dfec83804d1e415fa80288a55c98ab23f4c7267ba77', '[\"*\"]', NULL, '2021-12-18 17:18:36', '2021-12-18 17:18:36'),
+(3, 'App\\Models\\User', 31, 'token', 'a1fb166300f66fb199819287f99eab3bc6ab4627a9b5027b7b0be7a21776e112', '[\"*\"]', '2021-12-18 17:24:48', '2021-12-18 17:21:14', '2021-12-18 17:24:48');
+
 -- --------------------------------------------------------
 
 --
@@ -227,7 +244,8 @@ INSERT INTO `users` (`id`, `name`, `email`, `email_verified_at`, `password`, `re
 (27, 'Prof. Ansel Koch DVM', 'erdman.catalina@example.org', '2021-12-18 16:42:52', '$2y$10$92IXUNpkjO0rOQ5byMi.Ye4oKoEa3Ro9llC/.og/at2.uheWG/igi', 'bmaFl4RupA', '2021-12-18 16:42:52', '2021-12-18 16:42:52'),
 (28, 'Dr. Adrain Quigley', 'concepcion83@example.net', '2021-12-18 16:42:52', '$2y$10$92IXUNpkjO0rOQ5byMi.Ye4oKoEa3Ro9llC/.og/at2.uheWG/igi', 'RHqKrf5sCx', '2021-12-18 16:42:52', '2021-12-18 16:42:52'),
 (29, 'Miss Lavada Rice DVM', 'fwisoky@example.com', '2021-12-18 16:42:52', '$2y$10$92IXUNpkjO0rOQ5byMi.Ye4oKoEa3Ro9llC/.og/at2.uheWG/igi', 'vLtmLi61Ko', '2021-12-18 16:42:52', '2021-12-18 16:42:52'),
-(30, 'Myron Johnston', 'hudson.oren@example.com', '2021-12-18 16:42:52', '$2y$10$92IXUNpkjO0rOQ5byMi.Ye4oKoEa3Ro9llC/.og/at2.uheWG/igi', 'GudkdceOQJ', '2021-12-18 16:42:52', '2021-12-18 16:42:52');
+(30, 'Myron Johnston', 'hudson.oren@example.com', '2021-12-18 16:42:52', '$2y$10$92IXUNpkjO0rOQ5byMi.Ye4oKoEa3Ro9llC/.og/at2.uheWG/igi', 'GudkdceOQJ', '2021-12-18 16:42:52', '2021-12-18 16:42:52'),
+(31, 'Danica', 'danica@danica.com', NULL, '$2y$10$dseMRVeopAHFh8jLmW.RfeBRuSC6MdUC0U4tetAoA4GOk6HaRD0em', NULL, '2021-12-18 17:18:11', '2021-12-18 17:18:11');
 
 --
 -- Indexes for dumped tables
@@ -294,7 +312,7 @@ ALTER TABLE `users`
 -- AUTO_INCREMENT for table `barbies`
 --
 ALTER TABLE `barbies`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=12;
 
 --
 -- AUTO_INCREMENT for table `countries`
@@ -312,7 +330,7 @@ ALTER TABLE `failed_jobs`
 -- AUTO_INCREMENT for table `favorites`
 --
 ALTER TABLE `favorites`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT;
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
 -- AUTO_INCREMENT for table `migrations`
@@ -324,13 +342,13 @@ ALTER TABLE `migrations`
 -- AUTO_INCREMENT for table `personal_access_tokens`
 --
 ALTER TABLE `personal_access_tokens`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT;
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
 -- AUTO_INCREMENT for table `users`
 --
 ALTER TABLE `users`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=31;
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=32;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;

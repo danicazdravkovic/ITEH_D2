@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Barbie;
 use Illuminate\Http\Request;
+use Validator;
 
 class BarbieController extends Controller
 {
