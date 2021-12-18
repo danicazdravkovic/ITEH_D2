@@ -15,7 +15,6 @@ class UpdateBarbieTable extends Migration
     {
         Schema::table('barbies', function ($table) {
             $table->string('eye_color');
-            $table->unique('country_id');
         });
     }
 
@@ -28,7 +27,6 @@ class UpdateBarbieTable extends Migration
     {
         Schema::table('barbies', function ($table) {
             $table->dropColumn('eye_color');
-            $table->dropUnique('country_id');
         });
     }
 }
