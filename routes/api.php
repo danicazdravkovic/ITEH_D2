@@ -1,5 +1,9 @@
 <?php
 
+use App\Http\Controllers\BarbieController;
+use App\Http\Controllers\CountryController;
+use App\Http\Controllers\FavoriteController;
+use App\Http\Controllers\UserController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
@@ -14,6 +18,22 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
-    return $request->user();
+Route::post('/login', [UserController::class, 'login']);
+Route::post('/register', [UserController::class, 'register']);
+Route::get('/countries', [CountryController::class, 'index']);
+Route::get('/barbies', [BarbieController::class, 'index']);
+
+Route::group(['middleware' => 'auth:sanctum'], function () {
+    // Auth
+    Route::post('/logout', [UserController::class, 'logout']);
+
+    // Barbies
+    Route::post('/barbies', [BarbieController::class, 'store']);
+    Route::put('/barbies/{barbie}', [BarbieController::class, 'update']);
+    Route::delete('/barbies/{barbie}', [BarbieController::class, 'destroy']);
+
+    // Favorites
+    Route::post('/favorites', [FavoriteController::class, 'store']);
+    Route::get('/favorites/{favorite}', [FavoriteController::class, 'show']);
+    Route::delete('/favorites/{favorite}', [FavoriteController::class, 'destroy']);
 });
