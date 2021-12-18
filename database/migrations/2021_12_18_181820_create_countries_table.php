@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateBarbieTable extends Migration
+class CreateCountriesTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,13 +13,9 @@ class CreateBarbieTable extends Migration
      */
     public function up()
     {
-        Schema::create('barbie', function (Blueprint $table) {
+        Schema::create('countries', function (Blueprint $table) {
             $table->id();
             $table->string('name');
-            $table->string('hair_color');
-            $table->string('length');
-            $table->bigInteger('country_id');
-            $table->double('price', 15, 2);
             $table->timestamps();
         });
     }
@@ -31,6 +27,6 @@ class CreateBarbieTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('barbie');
+        Schema::dropIfExists('countries');
     }
 }
